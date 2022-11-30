@@ -1,0 +1,68 @@
+<div>
+  <div>
+    <h1 class="pageTitle">Conversion history</h1>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container>
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef class="tabTextColor">Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <!-- Event Column -->
+        <ng-container matColumnDef="event">
+          <th mat-header-cell *matHeaderCellDef class="tabTextColor">Event</th>
+          <td mat-cell *matCellDef="let element">{{ element.event }}</td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="tabTextColor">Action</th>
+          <td mat-cell *matCellDef="let element; index as i">
+            <ng-container *ngIf="hoverRow == i + 1">
+              <button
+                mat-button
+                [color]="'primary'"
+                (click)="onView(element)"
+                style="margin-right: 20px"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+                <span style="font-family: Roboto !important; font-size: 16px"
+                  >View
+                </span>
+              </button>
+              <button
+                mat-button
+                [color]="'warn'"
+                (click)="onDelete(element, i)"
+              >
+                <mat-icon>delete_forever</mat-icon>
+                <span style="font-family: Roboto !important; font-size: 16px"
+                  >Delete from history</span
+                >
+              </button>
+            </ng-container>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          (mouseenter)="mouseEnter($event)"
+        ></tr>
+      </ng-container>
+    </table>
+
+    <mat-paginator
+      *ngIf="ELEMENT_DATA?.length > 4"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

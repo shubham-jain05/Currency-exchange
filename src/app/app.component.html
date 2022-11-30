@@ -1,0 +1,28 @@
+<mat-toolbar class="tabBackground">
+  <button mat-icon-button aria-label="currency exchange icon">
+    <img src="../../favicon.ico" height="10px" width="10px" />
+  </button>
+  <span class="sectionTitle">Currency<b>Exchange</b></span>
+  <nav
+    mat-tab-nav-bar
+    style="margin-left: 20px; margin-bottom: 0px"
+    [tabPanel]="tabPanel"
+  >
+    <a
+      mat-tab-link
+      *ngFor="let link of navLinks; index as i"
+      [routerLink]="link.path"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="link?.isActive"
+      (click)="onTabChange(i)"
+    >
+      {{ link.label | uppercase }}
+    </a>
+  </nav>
+</mat-toolbar>
+<mat-tab-nav-panel #tabPanel>
+  <div class="setMargin">
+    <router-outlet></router-outlet>
+  </div>
+</mat-tab-nav-panel>

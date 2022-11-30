@@ -1,0 +1,47 @@
+.row {
+  display: table-cell;
+  max-width: 4000px;
+}
+
+.amount-width {
+  margin: 10px;
+  width: 150px;
+}
+
+.form-width {
+  margin: 10px;
+  width: 250px;
+}
+
+.to-width {
+  margin: 10px;
+  width: 250px;
+}
+
+.centerdiv {
+  display: table-cell;
+  position: relative;
+  top: 30%;
+  left: 30%;
+  height:10em;
+  text-align: center;
+  margin-left: 50%;
+}
+
+.accentText {
+  color: #94c720;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 500px;
+  margin: 30px;
+  margin-bottom: 70px;
+  text-align: center;
+  line-height: 75px;
+}
